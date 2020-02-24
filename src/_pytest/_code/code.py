@@ -744,6 +744,9 @@ class FormattedExcinfo:
                 if name == "__builtins__":
                     lines.append("__builtins__ = <builtins>")
                 else:
+                    if isinstance(value, int):
+                        value = ("%d (0x%x)" % (value, value))
+
                     # This formatting could all be handled by the
                     # _repr() function, which is only reprlib.Repr in
                     # disguise, so is very configurable.
